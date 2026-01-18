@@ -25,6 +25,20 @@ services:
     networks:
       - my-network
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: admin-db-gui
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: daw-db-server
+      MYSQL_ROOT_PASSWORD: pass
+    depends_on:
+      - mysql
+    networks:
+      - my-network
+   
+
 networks:
   my-network:
 
